@@ -16,9 +16,9 @@ import io.dekorate.openshift.annotation.OpenshiftApplication;
 import io.dekorate.option.annotation.JvmOptions;
 
 @SpringBootApplication
-@OpenshiftApplication(replicas = 1, expose = true, envVars = {
-        @Env(name="sample-app-config", configmap = "sample-app-config")
-})
+//@OpenshiftApplication(replicas = 1, expose = true, envVars = {
+//        @Env(name="sample-app-config", configmap = "sample-app-config")
+//})
 @JvmOptions(xms = 128, xmx = 256, heapDumpOnOutOfMemoryError = true)
 public class PostgresDemoApplication implements CommandLineRunner{
 	
