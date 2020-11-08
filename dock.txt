@@ -1,0 +1,14 @@
+docker save myimage -o $HOME/images/myimage.tar
+k3d create -v $HOME/images:/var/lib/rancher/k3s/agent/images
+
+kubectl delete deployment tiller-deploy --namespace=kube-system
+kubectl delete service tiller-deploy --namespace=kube-system
+rm -rf $HOME/.helm/
+kubectl create clusterrolebinding tiller-cluster-admin \
+    --clusterrole=cluster-admin \
+    --serviceaccount=kube-system:default
+helm init
+
+KUBECONFIG=/etc/rancher/k3s/k3s.yaml 
+helm init --service-account tiller
+

@@ -1,0 +1,30 @@
+docker build -t mine:latest .
+docker tag  mine:latest 19591959/mine
+docker run -p 8080:9090 mine:latest
+
+docker run -p 8080:7070 alec/my:v1
+
+docker tag  my:latest alec/my:v1
+
+docker save -o my.tar alec/my:v2
+
+cp ds /var/lib/rancher/k3s/agent/images
+
+helm install my ./my
+
+helm del --purge my
+
+helm status my
+
+helm install my ./my
+
+
+Pour faire fonctionner helm
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+-------------------------------------------------------------------
+OPENAPI
+docker login
+docker tag my:latest 19591959/myrepo:latest
+docker push  19591959/myrepo:latest
+
+docker build -t 19591959/myrepo:latest .
